@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chatbots mit Tabs</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #4A90E2, #A8E6CF);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      padding: 1rem;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .tab-button {
+      background-color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    }
+
+    .tab-button.active {
+      background-color: #D2F1E4;
+    }
+
+    .iframe-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    iframe {
+      width: 600px;
+      height: 800px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Wähle deinen Chatbot</h1>
+  <div class="tabs">
+    <button class="tab-button active" onclick="showTab('flowise')">Flowise</button>
+    <button class="tab-button" onclick="showTab('chatbase')">Chatbase</button>
+  </div>
+
+  <div class="iframe-container">
+    <iframe id="flowise" src="https://flowiseai-experimental.onrender.com/chatbot/4cac5f3e-76a8-4c61-bb52-ff4f707860e6"></iframe>
+    <iframe id="chatbase" class="hidden" src="https://www.chatbase.co/chatbot-iframe/dto_3D1lFqGDimjYD7VM7"></iframe>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.getElementById('flowise').classList.add('hidden');
+      document.getElementById('chatbase').classList.add('hidden');
+      document.getElementById(tabId).classList.remove('hidden');
+
+      const buttons = document.querySelectorAll('.tab-button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (tabId === 'flowise') {
+        buttons[0].classList.add('active');
+      } else {
+        buttons[1].classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
